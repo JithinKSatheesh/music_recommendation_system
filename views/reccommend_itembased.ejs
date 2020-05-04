@@ -1,0 +1,21 @@
+
+<% for(let i=0;i<musicData.length;i++){%>
+    <div class="col col-12 col-lg-4 mr-4">
+            <div class="card card zoomIn animated delay-1s" style="width: 18rem;">
+                <a href="/playback/<%= musicData[i].music.title %>"><img src="/assets/img/music_logo.jpg" class="card-img-top" alt="..." class="space-holder"></a>
+                <div class="card-body">
+                    <h5 class="card-title"><%= musicData[i].music.title%></h5>
+                    <p class="card-text">by <%= musicData[i].music.artist %></p>
+                    <p class="card-text">Genre : <%= musicData[i].music.genre %></p>
+                    <p class="card-text">listen : <%= musicData[i].music.listenCount %></p>
+                    <% var ratingval = 0 %>
+                    <%if(musicData[i].music.rating != undefined ){ ratingval = Math.round(musicData[i].music.rating) } %>
+                    <% var  j = ratingval %>
+                    <% for(var k=0;k<5;k++){ %>
+                       <i class="fas fa-star <% if(j>0){%> text-warning <% j--}%> "></i>
+                    <% }%>
+                    <p class="card-text small">song average rating is <%= Math.round(ratingval) %></p>
+                </div>
+            </div>
+    </div> 
+<%}%> 

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/home.css">
+    <link rel="stylesheet" href="/assets/css/animate.css">
+    
+</head>
+<body>
+    <nav class="fixed-top bg-first">
+        <div class="space-20"></div>
+        <div class="space-20"></div>
+        <h1>MUSIC APP</h1>
+        <div class="space-20"></div>
+        <div class="container">
+            <div class="col col-12 navbar">
+                <ul class="menu-list">
+                    <li class="menu"><a href="/home">Home</a></li>
+                    <li class="menu"><a href="/uploadMusic">Upload Music</a></li>
+                    <li class="menu"><a href="/logout">logout</a></li>
+                </ul>
+                <p class="menu_name">&nbsp; <%= currentUser.name %>&nbsp;</p>
+            </div>
+            <div class="space-20"></div>
+            <div class="space-20"></div>
+            
+        </div>
+
+    </nav>
+
+    <div class="space-50"></div>
+    <div class="space-50"></div>
+    <div class="space-50"></div>
+    <div class="space-20"></div>
+    <div class="space-20"></div>
+
+    
+    <div class="container">
+        <div class="col col-12 ">
+            <div class="card zoomIn animated" style="max-width: 300px; min-width: 200px;">
+                <img src="/assets/img/music_logo.jpg" class="card-img-top" alt="..." class="space-holder">
+                <div class="card-body">
+                    <h5 class="card-title"><%= musicData.title %></h5>
+                    <p class="card-text">Artist : <%= musicData.artist %></p>
+                    <% var ratingval = 0 %>
+                    <%if(musicData.ratingRef.length != 0 ){ ratingval = musicData.ratingRef[0].rating } %>
+                    <% var  j = ratingval %> 
+                    <% for(var i=0;i<5;i++){ %>
+                                <a href="/updateRating/<%= musicData.title %>/<%= i+1 %>/"><i class="fas fa-star <% if(j>0){%> text-warning <% j--}%> "></i></a>
+                    <% }%>
+                    <p class="card-text small">You rated this song <%= ratingval %> stars</p>
+                </div>
+            </div>
+        </div> 
+    </div>
+    
+    <div class="container">
+        <div class="space-20"></div>
+        <div class="space-20"></div>
+        <div class="row">
+            <div class="col col-12 h3 text-white fadeIn animated ">
+                Similar songs
+            </div>
+        </div>
+        <div class="space-20"></div>
+        <div class="space-20"></div>
+        <div class="container-fluid d-flex justify-content-between">
+            <!-- left arrow -->
+            <div class=" text-white h2 d-flex align-items-center fadeIn animated delay-1s" style="margin-right: 20px;"><i class="fas fa-arrow-circle-left"></i></div>
+            <!-- cards container -->
+            <div id="itembased" class="row flex-nowrap card-group" style="overflow-x: scroll;" >
+
+                      <!-- music will be populated here -->
+            </div>
+            <!-- right arrow -->
+            <div class=" text-white h2  d-flex align-items-center fadeIn animated delay-1s" style="margin-left: 20px;padding-left: 10px;" ><i class="fas fa-arrow-circle-right"></i></div>
+
+        </div>
+    
+    </div>
+                    
+    <div class="space-50"></div>
+    <div class="space-50"></div>
+    <div class="space-50"></div>
+    <div class="space-50"></div>
+ 
+   
+    <div style="position: fixed;bottom: 0;height: 100px;" class="space-50 bg-dark animated slideInUp">
+        <div class="space-20 "></div>
+            <div class="d-flex flex-row justify-content-center  mb-3">
+                <div  class="text-white h1">
+                    <i class="fas fa-backward"></i>
+                    &nbsp;&nbsp;
+                    <i class="fas fa-play "></i>
+                    &nbsp;&nbsp;
+                    <i class="fas fa-forward"></i>
+                </div>
+               
+            </div>
+        <div class="space-50"></div>
+    </div>
+
+    
+    <script src="/assets/js/jquery-3.5.0.min.js"></script>
+    <script>
+
+        $('body').ready(function(){
+            $.ajax({
+                url:"/itembased/<%= musicData._id  %>",
+                method:"GET",
+                success:function(result,status){
+                    $("#itembased").html(result)
+                },
+                error:function(err){
+                    console.log("err")
+                }
+            })
+        })
+    </script>   
+
+</body>
+</html>

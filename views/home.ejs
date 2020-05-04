@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/home.css">
+    <link rel="stylesheet" href="/assets/css/animate.css">
+    
+</head>
+<body>
+    
+    <nav class="fixed-top bg-first">
+        <div class="space-20"></div>
+        <div class="space-20"></div>
+        <h1>MUSIC APP</h1>
+        <div class="space-20"></div>
+        <div class="container">
+            <div class="col col-12 navbar">
+                <ul class="menu-list">
+                    <li class="menu"><a href="/home">Home</a></li>
+                    <li class="menu"><a href="/uploadMusic">Upload Music</a></li>
+                    <li class="menu"><a href="/logout">logout</a></li>
+                </ul>
+                <p class="menu_name">&nbsp; <%= currentUser.name %>&nbsp;</p>
+            </div>
+            <div class="space-20"></div>
+            <div class="space-20"></div>
+            
+        </div>
+
+    </nav>
+
+    <div class="space-50"></div>
+    <div class="space-50"></div>
+    <div class="space-50"></div>
+    <div class="space-50"></div>
+    <div class="space-20"></div>
+    
+    
+    <div class="container">
+        <div class="row">
+            <div class="col col-12 h3 text-white fadeIn animated ">
+                 Most popular songs
+            </div>
+        </div>
+        <div class="space-20"></div>
+        <div class="space-20"></div>
+        <div class="container-fluid d-flex justify-content-between">
+            <!-- left arrow -->
+            <div class=" text-white h2 d-flex align-items-center fadeIn animated delay-1s" style="margin-right: 20px;"><i class="fas fa-arrow-circle-left"></i></div>
+            <!-- cards container -->
+            <div id="popularitybased" class="row flex-nowrap card-group" style="overflow-x: scroll;" >
+                
+                                <!-- music will be populated here -->
+            </div>
+            <!-- right arrow -->
+            <div class=" text-white h2  d-flex align-items-center fadeIn animated delay-1s" style="margin-left: 20px;" ><i class="fas fa-arrow-circle-right"></i></div>
+
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="space-20"></div>
+        <div class="space-20"></div>
+        <div class="row">
+            <div class="col col-12 h3 text-white fadeIn animated ">
+                Songs for you
+            </div>
+        </div>
+        <div class="space-20"></div>
+        <div class="space-20"></div>
+        <div class="container-fluid d-flex justify-content-between">
+            <!-- left arrow -->
+            <div class=" text-white h2 d-flex align-items-center fadeIn animated delay-1s" style="margin-right: 20px;"><i class="fas fa-arrow-circle-left"></i></div>
+            <!-- cards container -->
+            <div id="userbased" class="row flex-nowrap card-group" style="overflow-x: scroll;" >
+
+                      <!-- music will be populated here -->
+            </div>
+            <!-- right arrow -->
+            <div class=" text-white h2  d-flex align-items-center fadeIn animated delay-1s" style="margin-left: 20px;padding-left: 10px;" ><i class="fas fa-arrow-circle-right"></i></div>
+
+        </div>
+    
+    </div>
+                    
+
+
+    <div class="space-20"></div>
+    <div class="space-20"></div>
+    <div class="space-20"></div>
+    <div class="space-20"></div>
+
+    <script src="/assets/js/jquery-3.5.0.min.js"></script>
+    <script>
+
+        $('body').ready(function(){
+            $.ajax({
+                url:"/userbased",
+                method:"GET",
+                success:function(result,status){
+                    $("#userbased").html(result)
+                },
+                error:function(err){
+                    console.log("err")
+                }
+            })
+        })
+        $('body').ready(function(){
+            $.ajax({
+                url:"/popularitybased",
+                method:"GET",
+                success:function(result,status){
+                    $("#popularitybased").html(result)
+                },
+                error:function(err){
+                    console.log("err")
+                }
+            })
+        })
+    </script>
+</body>
+</html>

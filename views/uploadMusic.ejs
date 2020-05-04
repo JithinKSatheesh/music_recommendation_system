@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload a music</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/home.css">
+    
+</head>
+<body>
+    <div class="space-20"></div>
+    <div class="space-20"></div>
+    <h1>MUSIC APP</h1>
+    <div class="space-20"></div>
+    <div class="container">
+        <div class="col col-12 navbar">
+            <ul class="menu-list">
+                <li class="menu"><a href="/home">Home</a></li>
+                <li class="menu"><a href="/home"><%= currentUser.name %></a></li>
+                <li class="menu"><a href="/uploadMusic">Upload Music</a></li>
+                <li class="menu"><a href="/logout">logout</a></li>
+            </ul>
+        </div>
+        <div class="space-20"></div>
+        <div class="space-20"></div>
+        
+    </div>
+    <div class="container">
+        <div class="space-50"></div>
+            <div class="h2 text-white">Upload a music</div>
+            <div class="row">
+                
+                <div class="col col-12 col-lg-6 ">
+                    <form id="form-putdata" action="/uploadMusic" method="POST" encType="multipart/form-data">
+                        <div class="form-group" >
+                          <label for="title">Title</label>
+                          <input type="text" class="form-control" id="title"  name="title" >
+                        </div>
+
+                        <div class="form-group" >
+                            <label for="artist">Artist</label>
+                            <input type="text" class="form-control" id="artist"  name="artist" >
+                          </div>
+  
+                        <div class="form-group" >
+                            <label for="genre">Genre</label>
+                            <input type="text" class="form-control" id="genre" name="genre" >
+                        </div>
+                        
+                        <div class="form-group" >
+                            <label for="rating">Rating</label>
+                            <input type="text" class="form-control" id="rating" name="rating" >
+                        </div>
+
+                        <div class="form-group" >
+                            <label for="imageUrl">ImageUrl</label>
+                            <input type="text" class="form-control" id="imageUrl" name="imageUrl" >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="musicFile">choose music file</label>
+                            <div class="custom-file">
+                                <label class="custom-file-label" for="musicFile">Uplaod music</label>
+                                <input type="file" class="custom-file-input" id="musicFile" name="musicFile" >
+                            </div>    
+                        </div>
+                        
+                        <button type="submit" class="btn btn-dark">Upload music file</button>
+                      </form>
+                        <div class="space-50"></div>
+                        <div id="messagebox" class="col col-12"></div>
+                      
+                </div>
+            </div>
+    </div>
+    
+    
+
+    <div class="space-50"></div>
+    <div class="space-50"></div>
+   
+
+   
+
+</body>
+</html>

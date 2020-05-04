@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload a music</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/home.css">
+    
+</head>
+<body>
+    <div class="space-20"></div>
+    <div class="space-20"></div>
+    <h1>MUSIC APP</h1>
+    <div class="space-20"></div>
+    <div class="container">
+        <div class="col col-12 navbar">
+            <ul class="menu-list">
+                <li class="menu"><a href="/login">Login</a></li>
+                <li class="menu"><a href="/register"> Register</a></li>
+            </ul>
+        </div>
+        <div class="space-20"></div>
+        <div class="space-20"></div>
+        
+    </div>
+    <div class="container ">
+        <div class="space-50"></div>
+            <div class="h2 text-white">User login</div>
+            <div class="row">
+                
+                <div class="col col-12 col-lg-6  text-white">
+                    <form id="form-putdata"  action="/login" method="POST" >
+                        <div class="form-group" >
+                          <label for="username">Email</label>
+                          <input type="text" class="form-control" id="username"  name="username"  placeholder="email">
+                        </div>
+                        <div class="form-group" >
+                            <label for="password">password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="password">
+                        </div>
+                        <% if(msg.length != 0){ %>
+                            <div class="alert alert-danger"> <%= msg%></div>
+                       <% } %>
+                        
+                       <div class="space-20"></div>
+                        <button type="submit" class="btn btn-danger">Login</button>
+                      </form>
+                        <div class="space-50"></div>
+                        <div id="messagebox" class="col col-12"></div>
+                      
+                </div>
+            </div>
+    </div>
+    
+    
+
+    <div class="space-50"></div>
+    <div class="space-50"></div>
+   
+
+   
+
+</body>
+</html>
